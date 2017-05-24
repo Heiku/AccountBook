@@ -2,6 +2,7 @@ package com.example.ljh.accountbook.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ljh.accountbook.Dao.DBOpenHelper;
+import com.example.ljh.accountbook.Dao.InaccountDao;
 import com.example.ljh.accountbook.MainActivity;
 import com.example.ljh.accountbook.R;
 import com.example.ljh.accountbook.model.Tb_user;
@@ -34,6 +36,7 @@ public class RegisterActivity extends Activity {
 
     //获取DBHelper对象
     DBOpenHelper dbopenHelper ;
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,7 @@ public class RegisterActivity extends Activity {
 
         //创建DBOpenHelper对象
         dbopenHelper = new DBOpenHelper(this, "account.db", 1);
+        final InaccountDao account = new InaccountDao(RegisterActivity.this);
 
 
         registBtn.setOnClickListener(new View.OnClickListener() {
@@ -71,8 +75,7 @@ public class RegisterActivity extends Activity {
 
 
                         //插入数据
-                        dbopenHelper.insertCost(user);
-
+                        account.insertCost(user);
 
 
                         //将登录信息通过intent传给主页面
@@ -84,20 +87,17 @@ public class RegisterActivity extends Activity {
                         passwordEdit.setText("");
                         confirmEdit.setText("");
                         Toast.makeText(RegisterActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                        finish();
                     }else {
                         passwordEdit.setText("");
                         confirmEdit.setText("");
                         Toast.makeText(RegisterActivity.this, "密码不一致，请重新填写", Toast.LENGTH_SHORT).show();
                     }
                 }else {
-                    /*
+
                     passwordEdit.setText("");
-                    confirmEdit.setText("");y
-                    */
-                    System.out.println("password"+password);
-                    Log.d("tag", username);
-                    Log.d("tag", password);
-                    Log.d("tag", confirm);
+                    confirmEdit.setText("");
+
                     Toast.makeText(RegisterActivity.this, "请填入完整的用户信息", Toast.LENGTH_SHORT).show();
                 }
             }

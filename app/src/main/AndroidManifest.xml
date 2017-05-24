@@ -9,6 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
 
+
         <!--登录页面-->
         <activity android:name=".activity.LoginActivity" >
             <intent-filter>
@@ -29,6 +30,8 @@
         </activity>
 
         <!--注册Activity-->
+
+
         <activity android:name=".activity.RegisterActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

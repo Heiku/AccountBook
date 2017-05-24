@@ -5,30 +5,42 @@ package com.example.ljh.accountbook.model;
  */
 public class Tb_accout {
 
-    private double money;//金额
+    private String money;//金额
     private String data;//日期
     private String note;//备注
+    private String type;//类别
 
-    public Tb_accout(double money, String data, String note) {
+    public Tb_accout(String money, String data, String note, String type) {
         this.money = money;
         this.data = data;
         this.note = note;
+        this.type = type;
     }
 
-    public Tb_accout(double money, String data) {
+
+
+
+    public Tb_accout(String money, String data) {
         this.money = money;
         this.data = data;
     }
 
     public Tb_accout() {
-        super();
+
+    }
+    public String getType() {
+        return type;
     }
 
-    public double getMoney() {
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getMoney() {
         return money;
     }
 
-    public void setMoney(double money) {
+    public void setMoney(String money) {
         this.money = money;
     }
 

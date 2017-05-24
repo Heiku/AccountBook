@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="main_bg">#f5f5f5</color>
+    <color name="alertDialog">#C3BEF0</color>
 </resources>

@@ -2,10 +2,12 @@ package com.example.ljh.accountbook.Dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.UserDictionary;
 
+import com.example.ljh.accountbook.model.Tb_accout;
 import com.example.ljh.accountbook.model.Tb_user;
 
 /**
@@ -14,8 +16,12 @@ import com.example.ljh.accountbook.model.Tb_user;
  */
 public class DBOpenHelper extends SQLiteOpenHelper {
 
+    private SQLiteDatabase db;
+
     private static final int VERSION = 1;//数据库版本
     private static final String DBNAME = "account.db"; //数据库名
+
+
 
     public DBOpenHelper(Context context) {
         super(context,DBNAME , null, VERSION);
@@ -25,33 +31,39 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         super(context, name, null, version);
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL("create table tb_user(_id integer primary key autoincrement,username varchar(10)," +
-                "password varchar(10),incomeToday money,spendingToday money" +
-                "incomeMonth money,spendingMonth money)"); //创建用户表
+                "password varchar(20),incomeToday decimal,spendingToday decimal," +
+                "incomeMonth decimal,spendingMonth decimal)"); //创建用户表
 
     }
 
     /**
-     * 插入user表
-     * @param user
+     * 插入tb_accout_spend表
+     * @param tb_accout
      */
-    public void insertCost(Tb_user user){
+
+    public void insertSpendAccout(Tb_accout tb_accout){
         SQLiteDatabase database = getWritableDatabase();
         ContentValues cv = new ContentValues();
-        Tb_user tb_user = new Tb_user();
-        cv.put("username",tb_user.getUsername());
-        cv.put("password",tb_user.getPassword());
-        database.insert("tb_user",null,cv);
+        cv.put("money",tb_accout.getMoney());
+        cv.put("time",tb_accout.getData());
+        cv.put("type",tb_accout.getType());
+        cv.put("note",tb_accout.getNote());
+        database.insert("tb_accout_spend",null,cv);
     }
-/*
-    public void getCostData(){
+
+    public Cursor getAllCostData(){
         SQLiteDatabase database = getWritableDatabase();
-        return database.query("tb_user",)
+        return database.query("tb_accout_spend",null,null,null,null,null,"time"+"ASC");
     }
-*/
+
+
+
+
     /**
      * 删除表
      */
