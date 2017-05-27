@@ -1,11 +1,14 @@
 package com.example.ljh.accountbook;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.Window;
 import android.widget.ListView;
 
+import com.ddz.floatingactionbutton.FloatingActionButton;
 import com.example.ljh.accountbook.Dao.DBOpenHelper;
 import com.example.ljh.accountbook.activity.TbAccoutAdapter;
 import com.example.ljh.accountbook.model.Tb_accout;
@@ -22,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private TbAccoutAdapter adapter;
 
 
+    FloatingActionButton payBtn;
+    FloatingActionButton incomeBtn;
 
 
     @Override
@@ -30,7 +35,9 @@ public class MainActivity extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-
+        /**
+         * 载入ListView
+         */
         mTbAccout = new ArrayList<>();
         ListView accoutList = (ListView) findViewById(R.id.List);
 
@@ -38,7 +45,25 @@ public class MainActivity extends AppCompatActivity {
         accoutList.setAdapter(new TbAccoutAdapter(this, mTbAccout));
 
 
+        /**
+         * 为两个FloatingActionButton添加监听器
+         */
+        payBtn = (FloatingActionButton) findViewById(R.id.pay);
+        incomeBtn = (FloatingActionButton) findViewById(R.id.income);
 
+        payBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+            }
+        });
+
+        incomeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+            }
+        });
     }
 
 
