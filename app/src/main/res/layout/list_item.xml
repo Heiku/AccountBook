@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="60dp"
+    >
+
+    <TextView
+        android:id="@+id/it_time"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentLeft="true"
+        android:gravity="center"
+        android:text="显示时间"
+        android:textSize="15dp"/>
+
+    <TextView
+        android:id="@+id/it_type"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_toRightOf="@+id/it_time"
+        android:gravity="center"
+        android:text="显示类别"
+        android:textSize="15dp"/>
+
+    <TextView
+        android:id="@+id/it_money"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:text="显示金额"
+        android:textSize="20dp"/>
+
+
+
+
+</RelativeLayout>
