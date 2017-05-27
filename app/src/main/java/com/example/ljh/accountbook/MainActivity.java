@@ -1,26 +1,19 @@
 package com.example.ljh.accountbook;
 
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
-import android.widget.Button;
-import android.widget.GridView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 
 import com.example.ljh.accountbook.Dao.DBOpenHelper;
-import com.example.ljh.accountbook.Dialog.MyDialog;
 import com.example.ljh.accountbook.activity.TbAccoutAdapter;
 import com.example.ljh.accountbook.model.Tb_accout;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,20 +21,23 @@ public class MainActivity extends AppCompatActivity {
     private DBOpenHelper mDBOpenHelper;
     private TbAccoutAdapter adapter;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        //mDBOpenHelper = new DBOpenHelper(this);
+
         mTbAccout = new ArrayList<>();
         ListView accoutList = (ListView) findViewById(R.id.List);
 
         initAccoutData();
         accoutList.setAdapter(new TbAccoutAdapter(this, mTbAccout));
-        //adapter = new TbAccoutAdapter(this,mTbAccout);
-        //accoutList.setAdapter(adapter);
+
+
 
     }
 
