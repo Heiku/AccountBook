@@ -10,6 +10,8 @@ import android.widget.ListView;
 
 import com.ddz.floatingactionbutton.FloatingActionButton;
 import com.example.ljh.accountbook.Dao.DBOpenHelper;
+import com.example.ljh.accountbook.activity.IncomeActivity;
+import com.example.ljh.accountbook.activity.PayActivity;
 import com.example.ljh.accountbook.activity.TbAccoutAdapter;
 import com.example.ljh.accountbook.model.Tb_accout;
 
@@ -54,14 +56,16 @@ public class MainActivity extends AppCompatActivity {
         payBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
+                Intent intent = new Intent(MainActivity.this, PayActivity.class);
+                startActivity(intent);
             }
         });
 
         incomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
+                Intent intent = new Intent(MainActivity.this, IncomeActivity.class);
+                startActivity(intent);
             }
         });
     }

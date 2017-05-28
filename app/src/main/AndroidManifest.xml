@@ -39,6 +39,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity android:name=".activity.PayActivity">
+
+        </activity>
+
+        <activity android:name=".activity.IncomeActivity">
+
+        </activity>
     </application>
 
 </manifest>
