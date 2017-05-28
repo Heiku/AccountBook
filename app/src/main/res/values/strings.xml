@@ -3,4 +3,5 @@
     <string name="main_me">我的</string>
     <string name="picture">图标</string>
     <string name="detail">明细</string>
+    <string name="account_text">花费</string>
 </resources>
