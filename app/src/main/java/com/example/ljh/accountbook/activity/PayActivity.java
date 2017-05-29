@@ -18,8 +18,10 @@ import com.example.ljh.accountbook.R;
 import com.example.ljh.accountbook.UI.SimpleToolbar;
 import com.example.ljh.accountbook.model.Tb_accout;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +39,7 @@ public class PayActivity extends Activity {
 
     TextView amount_text;
     EditText amount_edit;
+    EditText amount_remake;
 
     private int[] icon= {
             R.mipmap.fanka, R.mipmap.gonggongqiche, R.mipmap.icon_zhichu_type_canyin, R.mipmap.icon_zhichu_type_gouwu,
@@ -151,6 +154,37 @@ public class PayActivity extends Activity {
         mSimpleToolbar.setRightTitleClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                amount_remake = (EditText) findViewById(R.id.remake_edit);
+
+                /**
+                 * 获取当前时间
+                 */
+                Calendar c = Calendar.getInstance();
+                int year = c.get(Calendar.YEAR);
+                int month = c.get(Calendar.MONTH);
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                int hour = c.get(Calendar.HOUR_OF_DAY);
+
+                String date = new String(year + "年" + month+1 + "月" + day + "日，" + hour +"点" );
+
+                String pay_moneny = amount_edit.getText().toString();
+                String pay_type = amount_text.getText().toString();
+                String pay_note = amount_remake.getText().toString();
+                String pay_date = date;
+
+
+                /**
+                 * 设置bean数据
+                 */
+                Tb_accout accout = new Tb_accout();
+                accout.setData(pay_date);
+                accout.setMoney(pay_moneny);
+                accout.setNote(pay_note);
+                accout.setType(pay_type);
+
+
 
             }
         });
