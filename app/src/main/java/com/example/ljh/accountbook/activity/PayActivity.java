@@ -185,7 +185,6 @@ public class PayActivity extends Activity {
                 accout.setType(pay_type);
 
 
-
             }
         });
 

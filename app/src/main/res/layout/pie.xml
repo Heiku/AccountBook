@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
     
     <com.example.ljh.accountbook.UI.SimpleToolbar
+        android:id="@+id/toolbar_pie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -44,13 +45,13 @@
             android:textSize="20sp"
             android:visibility="visible"
             />
-        
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/pie_chart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </com.github.mikephil.charting.charts.PieChart>
 
     </com.example.ljh.accountbook.UI.SimpleToolbar>
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pie_chart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.github.mikephil.charting.charts.PieChart>
 </LinearLayout>

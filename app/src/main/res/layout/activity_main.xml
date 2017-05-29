@@ -41,6 +41,7 @@
 
 
             <RadioButton
+                android:id="@+id/detail"
                 android:layout_width="wrap_content"
                 android:layout_height="52dp"
                 android:text="@string/detail"
@@ -49,6 +50,7 @@
                 android:layout_weight="1"
                 android:button="@null"/>
             <RadioButton
+                android:id="@+id/pieChart"
                 android:layout_width="wrap_content"
                 android:layout_height="52dp"
                 android:text="@string/picture"

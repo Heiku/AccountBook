@@ -48,6 +48,10 @@
         <activity android:name=".activity.IncomeActivity">
 
         </activity>
+
+        <activity android:name=".activity.PieChartActivity">
+
+        </activity>
     </application>
 
 </manifest>

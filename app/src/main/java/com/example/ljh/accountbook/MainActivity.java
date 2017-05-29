@@ -7,11 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.ListView;
+import android.widget.RadioButton;
 
 import com.ddz.floatingactionbutton.FloatingActionButton;
 import com.example.ljh.accountbook.Dao.DBOpenHelper;
 import com.example.ljh.accountbook.activity.IncomeActivity;
 import com.example.ljh.accountbook.activity.PayActivity;
+import com.example.ljh.accountbook.activity.PieChartActivity;
 import com.example.ljh.accountbook.activity.TbAccoutAdapter;
 import com.example.ljh.accountbook.model.Tb_accout;
 
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton payBtn;
     FloatingActionButton incomeBtn;
 
+
+    RadioButton pieChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +69,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, IncomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        pieChart = (RadioButton) findViewById(R.id.pieChart);
+        pieChart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, PieChartActivity.class);
                 startActivity(intent);
             }
         });
