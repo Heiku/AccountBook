@@ -5,10 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.provider.UserDictionary;
 
 import com.example.ljh.accountbook.model.Tb_accout;
-import com.example.ljh.accountbook.model.Tb_user;
+
 
 /**
  * 创建数据库
@@ -39,6 +38,12 @@ public class DBOpenHelper extends SQLiteOpenHelper {
                 "password varchar(20),incomeToday decimal,spendingToday decimal," +
                 "incomeMonth decimal,spendingMonth decimal)"); //创建用户表
 
+        db.execSQL("create table tb_spend(_id integer primary key autoincrement," +
+                "money decimal," +
+                "time varchar," +
+                "type varchar(10)," +
+                "note varchar)");//创建收入表
+
     }
 
     /**
@@ -46,19 +51,29 @@ public class DBOpenHelper extends SQLiteOpenHelper {
      * @param tb_accout
      */
 
-    public void insertSpendAccout(Tb_accout tb_accout){
+    public void insertAccout(Tb_accout tb_accout) {
         SQLiteDatabase database = getWritableDatabase();
+/*
+        database.execSQL("insert into tb_accout_spend (money,time,type,note) values (?,?,?,?)",
+                new Object[]
+                        {tb_accout.getMoney(),tb_accout.getData(),tb_accout.getType(),
+        tb_accout.getNote()});
+*/
+
+
         ContentValues cv = new ContentValues();
         cv.put("money",tb_accout.getMoney());
         cv.put("time",tb_accout.getData());
         cv.put("type",tb_accout.getType());
         cv.put("note",tb_accout.getNote());
-        database.insert("tb_accout_spend",null,cv);
+        database.insert("tb_spend", null, cv);
+
     }
 
-    public Cursor getAllCostData(){
+
+    public Cursor getAllCostData(String table) {
         SQLiteDatabase database = getWritableDatabase();
-        return database.query("tb_accout_spend",null,null,null,null,null,"time"+"ASC");
+        return database.query(table, null, null, null, null, null, "time " + "DESC");
     }
 
 

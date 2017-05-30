@@ -59,6 +59,7 @@
                 android:button="@null"
                 android:layout_weight="1"/>
             <RadioButton
+                android:id="@+id/myinfo"
                 android:layout_width="wrap_content"
                 android:layout_height="52dp"
                 android:text="@string/main_me"

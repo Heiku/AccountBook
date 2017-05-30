@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
 
     <com.example.ljh.accountbook.UI.SimpleToolbar
         android:id="@+id/simple_toolbar"
@@ -17,10 +15,9 @@
         android:minHeight="?attr/actionBarSize"
         android:background="?attr/colorPrimaryDark"
         app:contentInsetLeft="0dp"
-        app:contentInsetStart="0dp"
-        >
+        app:contentInsetStart="0dp">
 
-        
+
         <TextView
             android:id="@+id/txt_left_title"
             android:layout_width="wrap_content"
@@ -33,8 +30,7 @@
             android:text="返回"
             android:textColor="#ffffff"
             android:textSize="16sp"
-            android:visibility="visible"
-            />
+            android:visibility="visible" />
 
 
         <TextView
@@ -46,8 +42,7 @@
             android:text="支出"
             android:textColor="#ffffff"
             android:textSize="20sp"
-            android:visibility="visible"
-            />
+            android:visibility="visible" />
 
         <TextView
             android:id="@+id/txt_right_title"
@@ -63,13 +58,11 @@
 
             />
     </com.example.ljh.accountbook.UI.SimpleToolbar>
-    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -77,8 +70,7 @@
             android:id="@+id/remake_img"
             android:src="@mipmap/remake"
             android:layout_gravity="center"
-            android:layout_marginLeft="10sp"
-            />
+            android:layout_marginLeft="10sp" />
 
         <EditText
             android:id="@+id/remake_edit"
@@ -89,31 +81,28 @@
             android:textSize="25sp"
             android:fontFamily="monospace"
             android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            />
+            android:layout_marginLeft="20dp" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/amount"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@color/amount_background"
-        android:orientation="horizontal"
-        >
+        android:background="@color/income_background"
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/amount_text"
+            android:id="@+id/income_text"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textColor="#ffffff"
-            android:text="@string/account_text"
+            android:text="@string/income_text"
             android:textSize="30sp"
             android:gravity="center"
-            android:layout_marginLeft="20sp"
-            />
+            android:layout_marginLeft="20sp" />
 
         <EditText
-            android:id="@+id/amount_edit"
+            android:id="@+id/income_edit"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:textColor="#ffffff"
@@ -124,15 +113,15 @@
             android:text="0.0"
             android:gravity="right"
             android:textSize="50sp"
-            android:background="@null"
-            />
+            android:background="@null" />
+
     </LinearLayout>
 
     <GridView
-        android:id="@+id/grid"
+        android:id="@+id/income_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="4"
+        android:numColumns="3"
         android:horizontalSpacing="10dp"
         android:verticalSpacing="10dp"
         android:gravity="center"
@@ -140,16 +129,4 @@
         android:layout_marginTop="10sp"
 
         />
-
-    <DatePicker
-        android:id="@+id/pay_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:layout_gravity="center_horizontal"
-        android:datePickerMode="spinner"
-        android:calendarViewShown="false">
-
-    </DatePicker>
-
 </LinearLayout>

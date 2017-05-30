@@ -1,29 +1,28 @@
 package com.example.ljh.accountbook;
 
-
 import android.content.Intent;
+
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.Window;
 import android.widget.ListView;
 import android.widget.RadioButton;
+
 
 import com.ddz.floatingactionbutton.FloatingActionButton;
 import com.example.ljh.accountbook.Dao.DBOpenHelper;
 import com.example.ljh.accountbook.activity.IncomeActivity;
+import com.example.ljh.accountbook.activity.MyInfoActivity;
 import com.example.ljh.accountbook.activity.PayActivity;
-import com.example.ljh.accountbook.activity.PieChartActivity;
 import com.example.ljh.accountbook.activity.TbAccoutAdapter;
+import com.example.ljh.accountbook.activity.detailTabActivity;
 import com.example.ljh.accountbook.model.Tb_accout;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
-
 public class MainActivity extends AppCompatActivity {
-
     private List<Tb_accout> mTbAccout;
     private DBOpenHelper mDBOpenHelper;
     private TbAccoutAdapter adapter;
@@ -31,14 +30,15 @@ public class MainActivity extends AppCompatActivity {
 
     FloatingActionButton payBtn;
     FloatingActionButton incomeBtn;
+    RadioButton detail;
+    RadioButton my;
 
 
-    RadioButton pieChart;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
         /**
@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         mTbAccout = new ArrayList<>();
         ListView accoutList = (ListView) findViewById(R.id.List);
 
-        initAccoutData();
         accoutList.setAdapter(new TbAccoutAdapter(this, mTbAccout));
 
 
@@ -56,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
          */
         payBtn = (FloatingActionButton) findViewById(R.id.pay);
         incomeBtn = (FloatingActionButton) findViewById(R.id.income);
+        detail = (RadioButton) findViewById(R.id.detail);
+        my = (RadioButton) findViewById(R.id.myinfo);
+
 
         payBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,43 +75,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        pieChart = (RadioButton) findViewById(R.id.pieChart);
-        pieChart.setOnClickListener(new View.OnClickListener() {
+        /**
+         * 为 明细 添加事件
+         */
+        detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, PieChartActivity.class);
+                Intent intent = new Intent(MainActivity.this, detailTabActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
+        //Drawable mingxi = getResources().getDrawable(R.mipmap.mingxi);
+        //mingxi.setBounds(0,0,50,20);
+
+        my.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MyInfoActivity.class);
                 startActivity(intent);
             }
         });
+
+
     }
 
-
-    private void initAccoutData() {
-
-        for (int i = 0; i < 7; i++) {
-            Tb_accout tb_accout = new Tb_accout();
-            tb_accout.setData("2017-5-1" + i);
-            tb_accout.setType("吃" + i);
-            tb_accout.setMoney("50" + i);
-            mTbAccout.add(tb_accout);
-            //  mDBOpenHelper.insertSpendAccout(tb_accout);
-
-
-/*
-            Cursor cursor = mDBOpenHelper.getAllCostData();
-            if (cursor!=null){
-                while (cursor.moveToNext()){
-                    Tb_accout accout = new Tb_accout();
-                    accout.setData(cursor.getString(cursor.getColumnIndex("time")));
-                    accout.setData(cursor.getString(cursor.getColumnIndex("type")));
-                    accout.setData(cursor.getString(cursor.getColumnIndex("money")));
-                    mTbAccout.add(accout);
-                }
-                cursor.close();
-            }
-*/
-        }
-
-    }
 
 }
+
+

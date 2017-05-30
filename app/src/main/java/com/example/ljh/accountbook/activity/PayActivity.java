@@ -6,22 +6,26 @@ package com.example.ljh.accountbook.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.view.Window;
+
 import android.widget.AdapterView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+
+import com.example.ljh.accountbook.Dao.DBOpenHelper;
+import com.example.ljh.accountbook.Dao.InaccountDao;
 import com.example.ljh.accountbook.R;
 import com.example.ljh.accountbook.UI.SimpleToolbar;
 import com.example.ljh.accountbook.model.Tb_accout;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,15 +35,20 @@ import java.util.Map;
  */
 public class PayActivity extends Activity {
 
+
     private SimpleToolbar mSimpleToolbar;
 
     GridView gridView;
     List<Map<String, Object>> data_list;
     SimpleAdapter simpleAdapter;
+    DBOpenHelper mDBOpenHelper;
+    private List<Tb_accout> mTbAccountList;
+    private TbAccoutAdapter adapter;
 
     TextView amount_text;
     EditText amount_edit;
     EditText amount_remake;
+    DatePicker amount_data;
 
     private int[] icon= {
             R.mipmap.fanka, R.mipmap.gonggongqiche, R.mipmap.icon_zhichu_type_canyin, R.mipmap.icon_zhichu_type_gouwu,
@@ -151,28 +160,26 @@ public class PayActivity extends Activity {
         });
 
 
+        mDBOpenHelper = new DBOpenHelper(this);
+        mTbAccountList = new ArrayList<>();
+        final InaccountDao inaccountDao = new InaccountDao(this);
         mSimpleToolbar.setRightTitleClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
                 amount_remake = (EditText) findViewById(R.id.remake_edit);
+                amount_data = (DatePicker) findViewById(R.id.pay_date);
 
                 /**
                  * 获取当前时间
                  */
-                Calendar c = Calendar.getInstance();
-                int year = c.get(Calendar.YEAR);
-                int month = c.get(Calendar.MONTH);
-                int day = c.get(Calendar.DAY_OF_MONTH);
-                int hour = c.get(Calendar.HOUR_OF_DAY);
-
-                String date = new String(year + "年" + month+1 + "月" + day + "日，" + hour +"点" );
 
                 String pay_moneny = amount_edit.getText().toString();
                 String pay_type = amount_text.getText().toString();
                 String pay_note = amount_remake.getText().toString();
-                String pay_date = date;
+                String pay_date = (amount_data.getYear() + "-" + (amount_data.getMonth() + 1) + "-" +
+                        amount_data.getDayOfMonth()).toString();
 
 
                 /**
@@ -184,7 +191,18 @@ public class PayActivity extends Activity {
                 accout.setNote(pay_note);
                 accout.setType(pay_type);
 
+                /**
+                 * 将数据插入到表中
+                 */
+                inaccountDao.insertSpendCost(accout);
 
+                /**
+                 *  将加入Tb_accout中的数据放进List中
+                 */
+                mTbAccountList.add(accout);
+                Log.v("建表", "成功！");
+
+                //   adapter.notifyDataSetChanged();
             }
         });
 

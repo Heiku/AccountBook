@@ -52,6 +52,11 @@
         <activity android:name=".activity.PieChartActivity">
 
         </activity>
+
+        <activity android:name=".activity.MyInfoActivity">
+
+        </activity>
+        <activity android:name=".activity.detailTabActivity" />
     </application>
 
 </manifest>
