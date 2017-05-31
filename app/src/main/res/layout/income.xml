@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:singleLine="true"
-            android:text="支出"
+            android:text="收入"
             android:textColor="#ffffff"
             android:textSize="20sp"
             android:visibility="visible" />
@@ -129,4 +129,16 @@
         android:layout_marginTop="10sp"
 
         />
+
+    <DatePicker
+        android:id="@+id/income_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:layout_gravity="center_horizontal"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false">
+
+    </DatePicker>
+
 </LinearLayout>

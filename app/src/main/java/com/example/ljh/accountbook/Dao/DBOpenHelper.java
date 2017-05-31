@@ -44,6 +44,12 @@ public class DBOpenHelper extends SQLiteOpenHelper {
                 "type varchar(10)," +
                 "note varchar)");//创建收入表
 
+        db.execSQL("create table tb_income(_id integer primary key autoincrement," +
+                "money decimal," +
+                "time varchar," +
+                "type varchar(10)," +
+                "note varchar)");//创建收入表
+
     }
 
     /**

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/et_modify_username"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="用户名"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="16sp"
+
+
+        />
+
+    <com.example.ljh.accountbook.UI.PasswordEditText
+        android:id="@+id/et_modify_oldpass"
+        style="@style/et_password_style"
+        android:hint="旧密码"
+        android:imeOptions="actionNext" />
+
+    <com.example.ljh.accountbook.UI.PasswordEditText
+        android:id="@+id/et_modify_newpass"
+        style="@style/et_password_style"
+        android:layout_below="@id/et_modify_oldpass"
+        android:hint="新密码" />
+
+    <Button
+        android:id="@+id/btn_modify_pass"
+        style="@style/btn_normal_style"
+        android:layout_below="@id/et_modify_newpass"
+        android:text="完成" />
+</LinearLayout>

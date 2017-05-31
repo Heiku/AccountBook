@@ -3,15 +3,30 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@color/main_bg">
+    android:background="#FFFE9F">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="欢迎注册新用户"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:layout_marginBottom="100dp"/>
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/logo_login"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/theme" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="欢迎注册"
+            android:textSize="30dp"
+            android:layout_marginLeft="10dp" />
+
+
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,6 +52,7 @@
             android:inputType="textPassword"/>
         <Button
             android:id="@+id/registBtn"
+            android:background="@drawable/bg_btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="完 成 注 册"

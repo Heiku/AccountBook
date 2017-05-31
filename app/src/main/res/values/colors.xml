@@ -11,13 +11,14 @@
     
     <color name="amount_background">#FF771B</color>
 
+    <color name="oringe">#FF771B</color>
     <color name="my_background">#D3D6DB</color>
 
     <color name="income_background">#68868C</color>
 
     <!--登录界面按钮背景颜色-->
-    <color name="btn_color_main_bg_normal">#fff78b00</color>
-    <color name="btn_color_main_bg_pressed">#ffdb8100</color>
+    <color name="btn_color_main_bg_normal">#FFD480</color>
+    <color name="btn_color_main_bg_pressed">#FCA180</color>
     <color name="color_btn_normal_cbn2">#ffaaaaaa</color>
 
 </resources>

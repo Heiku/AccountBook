@@ -16,7 +16,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/oringe">
 
             <com.example.ljh.accountbook.UI.CircleImageView
                 android:id="@+id/info_imageview"

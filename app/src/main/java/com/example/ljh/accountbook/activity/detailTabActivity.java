@@ -15,6 +15,7 @@ import com.example.ljh.accountbook.model.Tb_accout;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * Created by Administrator on 2017/5/29 0029.
  */
@@ -24,7 +25,9 @@ public class detailTabActivity extends Activity {
 
     DBOpenHelper mDBOpenHelper;
     private List<Tb_accout> mList;
-    private TbAccoutAdapter adapter;
+    private List<Tb_accout> IList;
+    private TbAccoutAdapter spendAdapter;
+    private TbAccoutAdapter incomeAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +46,23 @@ public class detailTabActivity extends Activity {
 
         mDBOpenHelper = new DBOpenHelper(this);
         mList = new ArrayList<>();
-        ListView incomeList = (ListView) findViewById(R.id.income_List);
+        IList = new ArrayList<>();
+        ListView incomeList = (ListView) findViewById(R.id.income_list);
         ListView spendList = (ListView) findViewById(R.id.spend_List);
-        initCostData();
-        adapter = new TbAccoutAdapter(this, mList);
-        spendList.setAdapter(adapter);
+
+        initCostDataincome();
+        incomeAdapter = new TbAccoutAdapter(this, IList);
+        incomeList.setAdapter(incomeAdapter);
+
+        initCostDataSpend();
+        spendAdapter = new TbAccoutAdapter(this, mList);
+        spendList.setAdapter(spendAdapter);
+
+
 
     }
 
-    private void initCostData() {
+    private void initCostDataSpend() {
 
         Cursor cursor = mDBOpenHelper.getAllCostData("tb_spend");
         if (cursor != null) {
@@ -68,4 +79,20 @@ public class detailTabActivity extends Activity {
         }
     }
 
+    private void initCostDataincome() {
+
+        Cursor cursor = mDBOpenHelper.getAllCostData("tb_income");
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                Tb_accout accout = new Tb_accout();
+                accout.setMoney(cursor.getString(cursor.getColumnIndex("money")));
+                accout.setData(cursor.getString(cursor.getColumnIndex("time")));
+                accout.setType(cursor.getString(cursor.getColumnIndex("type")));
+                accout.setNote(cursor.getString(cursor.getColumnIndex("money")));
+                //  Log.v("数据：",accout.getMoney()+accout.getData()+accout.getType()+accout.getNote());
+                IList.add(accout);
+            }
+            cursor.close();
+        }
+    }
 }

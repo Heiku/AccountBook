@@ -7,15 +7,22 @@ package com.example.ljh.accountbook.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+
+import com.example.ljh.accountbook.Dao.DBOpenHelper;
+import com.example.ljh.accountbook.Dao.InaccountDao;
+
 import com.example.ljh.accountbook.R;
 import com.example.ljh.accountbook.UI.SimpleToolbar;
+import com.example.ljh.accountbook.model.Tb_accout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,10 +39,14 @@ public class IncomeActivity extends Activity {
     GridView gridView;
     List<Map<String, Object>> data_list;
     SimpleAdapter simpleAdapter;
+    DBOpenHelper mDBOpenHelper;
+    private List<Tb_accout> mTbAccountList;
+    //private TbAccoutAdapter adapter;
 
     TextView income_text;
     EditText income_edit;
     EditText income_remake;
+    DatePicker income_data;
 
     private int[] icon = {
             R.mipmap.baoxian, R.mipmap.chushou, R.mipmap.gongzi,
@@ -135,6 +146,54 @@ public class IncomeActivity extends Activity {
                 }
             }
         });
+
+
+        mDBOpenHelper = new DBOpenHelper(this);
+        mTbAccountList = new ArrayList<>();
+        final InaccountDao inaccountDao = new InaccountDao(this);
+        mSimpleToolbar.setRightTitleClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                income_remake = (EditText) findViewById(R.id.remake_edit);
+                income_data = (DatePicker) findViewById(R.id.income_data);
+
+                /**
+                 * 获取当前时间
+                 */
+
+                String income_moneny = income_edit.getText().toString();
+                String income_type = income_text.getText().toString();
+                String income_note = income_remake.getText().toString();
+                String income_date = (income_data.getYear() + "-" + (income_data.getMonth() + 1) + "-" +
+                        income_data.getDayOfMonth()).toString();
+
+
+                /**
+                 * 设置bean数据
+                 */
+                Tb_accout accout = new Tb_accout();
+                accout.setData(income_date);
+                accout.setMoney(income_moneny);
+                accout.setNote(income_note);
+                accout.setType(income_type);
+
+                /**
+                 * 将数据插入到表中
+                 */
+                inaccountDao.insertincomeCost(accout);
+
+                /**
+                 *  将加入Tb_accout中的数据放进List中
+                 */
+                mTbAccountList.add(accout);
+                Log.v("建表", "成功！");
+
+                //adapter.notifyDataSetChanged();
+            }
+        });
+
 
 
     }

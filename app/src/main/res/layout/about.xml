@@ -9,14 +9,14 @@
         android:layout_height="80dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="60dp"
-        android:src="@mipmap/about_logo" />
+        android:src="@mipmap/theme" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:padding="4dp"
-        android:text="@string/app_name"
+        android:text="P记账"
         android:textSize="20sp" />
 
     <TextView
@@ -42,7 +42,7 @@
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:gravity="left|center_vertical"
-            android:text="微信号"
+            android:text="团队"
             android:textSize="16sp" />
 
         <TextView
@@ -51,7 +51,7 @@
             android:layout_weight="1"
             android:gravity="left|center_vertical"
             android:paddingLeft="12dp"
-            android:text="微信"
+            android:text="Pentakill"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -70,7 +70,7 @@
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:gravity="left|center_vertical"
-            android:text="电子邮箱"
+            android:text="成员"
             android:textSize="16sp" />
 
         <TextView
@@ -79,7 +79,7 @@
             android:layout_weight="1"
             android:gravity="left|center_vertical"
             android:paddingLeft="12dp"
-            android:text="我们的邮箱"
+            android:text="林佳鸿 陈沛伦 戴达升"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -107,7 +107,7 @@
             android:layout_weight="1"
             android:gravity="left|center_vertical"
             android:paddingLeft="12dp"
-            android:text="地址"
+            android:text="G226"
             android:textSize="16sp" />
     </LinearLayout>
 

@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@color/main_bg">
+    android:background="#FFFE9F">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,16 +11,16 @@
         android:gravity="center">
         <ImageView
             android:id="@+id/logo_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:src="@mipmap/icon_login"
+            android:src="@mipmap/theme"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="爱记账"
+            android:text="P记账"
             android:textSize="30dp"
             android:layout_marginLeft="10dp"/>
 
@@ -54,29 +54,27 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
             android:id="@+id/login"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="登 录"
             android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"/>
-    </LinearLayout>
+            android:background="@drawable/bg_btn_login" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
         <Button
+            android:background="@drawable/bg_btn_login"
             android:id="@+id/regist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="注 册 新 用 户"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="40dp"
            />
-    </LinearLayout>
+    </RelativeLayout>
 
 
 

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -29,6 +30,9 @@ public class LoginActivity extends Activity {
     Button login;
     Button regist;
 
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+
    private DBOpenHelper dbOpenHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,14 @@ public class LoginActivity extends Activity {
                             "帐号密码不能为空").setPositiveButton("确定",null).show();
                 }
                 login(name,pass);
+
+
+                //将用户名放入sharePerference文件中
+                preferences = getSharedPreferences(name, MODE_PRIVATE);
+                editor = preferences.edit();
+
+                editor.putString("username", name);
+                editor.commit();
             }
         });
 
